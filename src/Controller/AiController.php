@@ -17,7 +17,7 @@ class AiController extends AbstractController{
         $client = HttpClient::create();
         $response = $client->request('POST', "https://openrouter.ai/api/v1/chat/completions", [
             'headers' => [
-                'Authorization' => 'Bearer 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',
+                'Authorization' => 'Bearer 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',
                 'Content-Type' => 'application/json',
                 'HTTP-Referer' => 'Book',
                 'X-Title' => 'Description_Generator',
@@ -41,7 +41,7 @@ class AiController extends AbstractController{
         ]);
         $data = $response->toArray(false);
         return $this->json([
-            'response' => $data['choices'][0]['message']['content'] ?? 'No reply',
+            'response' => $data['choices'][0]['message']['content'],
         ]);
     }
 }

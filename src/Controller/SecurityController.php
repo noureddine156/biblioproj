@@ -49,7 +49,7 @@ class SecurityController extends AbstractController
     ): Response
     {
         if ($this->getUser()) {
-            return $this->redirectToRoute('app_login');
+            return $this->redirectToRoute('app_home');
         }
 
         $user = new User();
@@ -67,11 +67,8 @@ class SecurityController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
-            return $userAuthenticator->authenticateUser(
-                $user,
-                $authenticator,
-                $request
-            );
+            // Redirect to login page after registration
+            return $this->redirectToRoute('app_login');
         }
 
         return $this->render('security/register.html.twig', [

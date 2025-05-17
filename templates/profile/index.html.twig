@@ -3,40 +3,41 @@
 {% block title %}My Profile{% endblock %}
 
 {% block body %}
-<div class="row">
-    <div class="col-md-6 offset-md-3">
-        <div class="card">
-            <div class="card-header bg-primary text-white">
-                <h2 class="text-center mb-0">My Profile</h2>
+<div class="row justify-content-center">
+    <div class="col-lg-8 col-md-10">
+        <div class="card shadow-lg border-0">
+            <div class="card-header bg-gradient-primary text-white text-center py-4">
+                <h2 class="mb-0">{{ app.user.firstName }} {{ app.user.lastName }}</h2>
+                <p class="mb-0">{{ app.user.email }}</p>
             </div>
             <div class="card-body">
+                <h4 class="mb-4 text-primary">Edit Profile Information</h4>
                 {{ form_start(profileForm) }}
-                    <div class="mb-3">
-                        {{ form_label(profileForm.firstName) }}
-                        {{ form_widget(profileForm.firstName) }}
-                        <div class="form-error">
-                            {{ form_errors(profileForm.firstName) }}
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            {{ form_label(profileForm.firstName) }}
+                            {{ form_widget(profileForm.firstName, {'attr': {'class': 'form-control'}}) }}
+                            <div class="form-error text-danger small">
+                                {{ form_errors(profileForm.firstName) }}
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            {{ form_label(profileForm.lastName) }}
+                            {{ form_widget(profileForm.lastName, {'attr': {'class': 'form-control'}}) }}
+                            <div class="form-error text-danger small">
+                                {{ form_errors(profileForm.lastName) }}
+                            </div>
                         </div>
                     </div>
-
-                    <div class="mb-3">
-                        {{ form_label(profileForm.lastName) }}
-                        {{ form_widget(profileForm.lastName) }}
-                        <div class="form-error">
-                            {{ form_errors(profileForm.lastName) }}
-                        </div>
-                    </div>
-
                     <div class="mb-3">
                         {{ form_label(profileForm.email) }}
-                        {{ form_widget(profileForm.email) }}
-                        <div class="form-error">
+                        {{ form_widget(profileForm.email, {'attr': {'class': 'form-control'}}) }}
+                        <div class="form-error text-danger small">
                             {{ form_errors(profileForm.email) }}
                         </div>
                     </div>
-
                     <div class="d-grid gap-2">
-                        <button type="submit" class="btn btn-primary">Update Profile</button>
+                        <button type="submit" class="btn btn-primary btn-lg">Update Profile</button>
                     </div>
                 {{ form_end(profileForm) }}
             </div>
