@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Library Management System{% endblock %}
+
+{% block body %}
+    <div class="jumbotron bg-light p-5 rounded">
+        <h1 class="display-4">Welcome to the Library Management System</h1>
+        <p class="lead">Your one-stop solution for managing books, authors, and more.</p>
+        <hr class="my-4">
+        <p>Browse our collection, add new books, or manage existing ones.</p>
+        <a class="btn btn-primary btn-lg" href="{{ path('app_book_index') }}" role="button">Browse Books</a>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-md-12">
+            <h2>Latest Books</h2>
+            <hr>
+        </div>
+    </div>
+
+    <div class="row">
+        {% if latestBooks is empty %}
+            <div class="col-12">
+                <div class="alert alert-info">
+                    No books available yet. <a href="{{ path('app_book_new') }}" class="alert-link">Add a book</a> to get started.
+                </div>
+            </div>
+        {% else %}
+            {% for book in latestBooks %}
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ book.title }}</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">By {{ book.author }}</h6>
+                            <p class="card-text">{{ book.description|slice(0, 100) }}{% if book.description|length > 100 %}...{% endif %}</p>
+                            <div class="d-flex justify-content-between">
+                                <small class="text-muted">ISBN: {{ book.isbn }}</small>
+                                <small class="text-muted">{{ book.year }}</small>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-transparent">
+                            <a href="{{ path('app_book_show', {'id': book.id}) }}" class="btn btn-sm btn-primary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Author{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        <h2 class="mb-0">Create New Author</h2>
+                    </div>
+                    <div class="card-body">
+                        {{ form_start(form) }}
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        {{ form_label(form.firstName) }}
+                                        {{ form_widget(form.firstName) }}
+                                        <div class="form-error">
+                                            {{ form_errors(form.firstName) }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        {{ form_label(form.lastName) }}
+                                        {{ form_widget(form.lastName) }}
+                                        <div class="form-error">
+                                            {{ form_errors(form.lastName) }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                {{ form_label(form.email) }}
+                                {{ form_widget(form.email) }}
+                                <div class="form-error">
+                                    {{ form_errors(form.email) }}
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                {{ form_label(form.biography) }}
+                                {{ form_widget(form.biography) }}
+                                <div class="form-error">
+                                    {{ form_errors(form.biography) }}
+                                </div>
+                            </div>
+
+                            <div class="d-flex justify-content-between">
+                                <a href="{{ path('app_author_index') }}" class="btn btn-secondary">Back to list</a>
+                                <button class="btn btn-primary">Save</button>
+                            </div>
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

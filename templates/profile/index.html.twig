@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}My Profile{% endblock %}
+
+{% block body %}
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h2 class="text-center mb-0">My Profile</h2>
+            </div>
+            <div class="card-body">
+                {{ form_start(profileForm) }}
+                    <div class="mb-3">
+                        {{ form_label(profileForm.firstName) }}
+                        {{ form_widget(profileForm.firstName) }}
+                        <div class="form-error">
+                            {{ form_errors(profileForm.firstName) }}
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        {{ form_label(profileForm.lastName) }}
+                        {{ form_widget(profileForm.lastName) }}
+                        <div class="form-error">
+                            {{ form_errors(profileForm.lastName) }}
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        {{ form_label(profileForm.email) }}
+                        {{ form_widget(profileForm.email) }}
+                        <div class="form-error">
+                            {{ form_errors(profileForm.email) }}
+                        </div>
+                    </div>
+
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-primary">Update Profile</button>
+                    </div>
+                {{ form_end(profileForm) }}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
